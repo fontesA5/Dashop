@@ -1,0 +1,247 @@
+{
+  "products": [
+    {
+      "id": "prod-001",
+      "name": "All-Purpose Cleaner Concentrate",
+      "slug": "all-purpose-cleaner-concentrate",
+      "description": "Our signature all-purpose cleaner cuts through grease, grime, and tough stains without harsh chemicals. Eco-friendly formula safe for pets and children. Concentrated formula - 1 bottle makes 4 gallons!",
+      "price": 18.99,
+      "cost": 9.50,
+      "inventory": 120,
+      "category_id": "cat-cleaning-001",
+      "main_image_url": "/images/products/all-purpose-cleaner-bottle.jpg",
+      "images": [
+        { "url": "/images/products/all-purpose-cleaner-front.jpg", "alt": "All-Purpose Cleaner Front View" },
+        { "url": "/images/products/all-purpose-cleaner-side.jpg", "alt": "All-Purpose Cleaner Side View" }
+      ],
+      "variants": [
+        {
+          "name": "Standard Bottle (32oz)",
+          "price": 18.99,
+          "inventory": 120,
+          "options": []
+        },
+        {
+          "name": "Family Pack (64oz)",
+          "price": 32.99,
+          "inventory": 85,
+          "options": []
+        }
+      ],
+      "sku": "APC-32OZ",
+      "is_active": true,
+      "created_at": new Date().toISOString(),
+      "updated_at": new Date().toISOString()
+    },
+    {
+      "id": "prod-002",
+      "name": "Laundry Detergent Pods",
+      "slug": "laundry-detergent-pods",
+      "description": "Convenient pre-measured laundry detergent pods that dissolve completely. Tough on stains but gentle on fabrics. Hypoallergenic formula suitable for sensitive skin.",
+      "price": 24.99,
+      "cost": 12.00,
+      "inventory": 200,
+      "category_id": "cat-cleaning-002",
+      "main_image_url": "/images/products/laundry-pods.jpg",
+      "images": [],
+      "variants": [
+        {
+          "name": "Lavender Scent - 50 Pods",
+          "price": 24.99,
+          "inventory": 100,
+          "options": []
+        },
+        {
+          "name": "Fresh Citrus - 50 Pods",
+          "price": 24.99,
+          "inventory": 100,
+          "options": []
+        }
+      ],
+      "sku": "LD-50PODS",
+      "is_active": true,
+      "created_at": new Date().toISOString(),
+      "updated_at": new Date().toISOString()
+    },
+    {
+      "id": "prod-003",
+      "name": "Hand Soap Dispenser Set",
+      "slug": "hand-soap-dispenser-set",
+      "description": "Set of 4 premium hand soap dispensers with pump mechanism. BPA-free plastic construction. Includes refill bottles.",
+      "price": 29.99,
+      "cost": 15.00,
+      "inventory": 75,
+      "category_id": "cat-household-001",
+      "main_image_url": "/images/products/soap-dispensers.jpg",
+      "images": [],
+      "variants": [
+        {
+          "name": "Matte Black - Set of 4",
+          "price": 29.99,
+          "inventory": 50,
+          "options": []
+        },
+        {
+          "name": "Brushed Nickel - Set of 4",
+          "price": 29.99,
+          "inventory": 25,
+          "options": []
+        }
+      ],
+      "sku": "SOAP-4PK",
+      "is_active": true,
+      "created_at": new Date().toISOString(),
+      "updated_at": new Date().toISOString()
+    },
+    {
+      "id": "prod-004",
+      "name": "Multi-Surface Wipes",
+      "slug": "multi-surface-wipes",
+      "description": "Plant-based, biodegradable cleaning wipes for multiple surfaces. No harsh chemicals, just effective cleaning power. Perfect for quick cleanups.",
+      "price": 12.99,
+      "cost": 6.50,
+      "inventory": 300,
+      "category_id": "cat-cleaning-003",
+      "main_image_url": "/images/products/multi-surface-wipes.jpg",
+      "images": [],
+      "variants": [
+        {
+          "name": "Unscented - 80 Count",
+          "price": 12.99,
+          "inventory": 200,
+          "options": []
+        },
+        {
+          "name": "Citrus Scent - 80 Count",
+          "price": 14.99,
+          "inventory": 100,
+          "options": []
+        }
+      ],
+      "sku": "MSW-80CT",
+      "is_active": true,
+      "created_at": new Date().toISOString(),
+      "updated_at": new Date().toISOString()
+    },
+    {
+      "id": "prod-005",
+      "name": "Glass & Mirror Cleaner",
+      "slug": "glass-mirror-cleaner",
+      "description": "Streak-free glass and mirror cleaning solution. Leaves a protective coating for up to 30 days. Safe use on windows, mirrors, and glass surfaces.",
+      "price": 8.99,
+      "cost": 4.25,
+      "inventory": 180,
+      "category_id": "cat-cleaning-004",
+      "main_image_url": "/images/products/glass-cleaner.jpg",
+      "images": [],
+      "variants": [
+        {
+          "name": "20 oz Bottle",
+          "price": 8.99,
+          "inventory": 120,
+          "options": []
+        },
+        {
+          "name": "40 oz Bottle",
+          "price": 14.99,
+          "inventory": 60,
+          "options": []
+        }
+      ],
+      "sku": "GMC-20OZ",
+      "is_active": true,
+      "created_at": new Date().toISOString(),
+      "updated_at": new Date().toISOString()
+    },
+    {
+      "id": "prod-006",
+      "name": "Kitchen Sponge Pack",
+      "slug": "kitchen-sponge-pack",
+      "description": "Pack of 12 ultra-absorbent kitchen sponges with scrubbing side. Eco-friendly, biodegradable natural fiber core. Durable and long-lasting.",
+      "price": 6.99,
+      "cost": 3.50,
+      "inventory": 250,
+      "category_id": "cat-household-002",
+      "main_image_url": "/images/products/kitchen-sponges.jpg",
+      "images": [],
+      "variants": [
+        {
+          "name": "Standard Green - 12 Pack",
+          "price": 6.99,
+          "inventory": 250,
+          "options": []
+        },
+        {
+          "name": "Red Heavy Duty - 12 Pack",
+          "price": 8.99,
+          "inventory": 75,
+          "options": []
+        }
+      ],
+      "sku": "SPG-12PK",
+      "is_active": true,
+      "created_at": new Date().toISOString(),
+      "updated_at": new Date().toISOString()
+    },
+    {
+      "id": "prod-007",
+      "name": "Microfiber Cleaning Cloths",
+      "slug": "microfiber-cleaning-cloths",
+      "description": "Premium microfiber cleaning cloths for dust-free polishing. Pack of 24 reusable cloths. Machine washable and durable.",
+      "price": 16.99,
+      "cost": 8.00,
+      "inventory": 150,
+      "category_id": "cat-cleaning-005",
+      "main_image_url": "/images/products/microfiber-cloths.jpg",
+      "images": [],
+      "variants": [
+        {
+          "name": "Assorted Colors - 24 Pack",
+          "price": 16.99,
+          "inventory": 100,
+          "options": []
+        },
+        {
+          "name": "Blue Only - 24 Pack",
+          "price": 16.99,
+          "inventory": 50,
+          "options": []
+        }
+      ],
+      "sku": "MFC-24PK",
+      "is_active": true,
+      "created_at": new Date().toISOString(),
+      "updated_at": new Date().toISOString()
+    },
+    {
+      "id": "prod-008",
+      "name": "Disinfecting Spray Wipes",
+      "slug": "disinfecting-spray-wipes",
+      "description": "2-in-1 spray and wipe for quick disinfection. Kills 99.9% of germs on contact. Perfect for high-touch surfaces like doorknobs, light switches, and countertops.",
+      "price": 15.99,
+      "cost": 7.50,
+      "inventory": 120,
+      "category_id": "cat-cleaning-006",
+      "main_image_url": "/images/products/disinfecting-wipes.jpg",
+      "images": [],
+      "variants": [
+        {
+          "name": "Unscented - 58 Count",
+          "price": 15.99,
+          "inventory": 80,
+          "options": []
+        },
+        {
+          "name": "Citrus Fresh - 58 Count",
+          "price": 17.99,
+          "inventory": 40,
+          "options": []
+        }
+      ],
+      "sku": "DSW-58CT",
+      "is_active": true,
+      "created_at": new Date().toISOString(),
+      "updated_at": new Date().toISOString()
+    }
+  ]
+}

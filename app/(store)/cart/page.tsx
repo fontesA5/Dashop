@@ -85,7 +85,7 @@ export default function CartPage() {
           </svg>
           
           <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
-          <p className="text-muted-foreground mb-8">Looks like you haven't added any products yet.</p>
+          <p className="text-muted-foreground mb-8">Looks like you haven&apos;t added any products yet.</p>
           
           <Link 
             href="/products"
@@ -169,7 +169,7 @@ export default function CartPage() {
                 <div>
                   <p className="font-medium">Free shipping on orders over ${shippingThreshold}</p>
                   <p className="text-sm text-muted-foreground">
-                    You're only ${(shippingThreshold - cartTotal).toFixed(2)} away!
+                    You&apos;re only ${(shippingThreshold - cartTotal).toFixed(2)} away!
                   </p>
                 </div>
                 <Link 

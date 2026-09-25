@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { supabase } from './supabase'
 
 // Cart item type
@@ -12,25 +12,26 @@ export interface CartItem {
   quantity: number
   variant?: string
   main_image_url?: string
+  description?: string
 }
 
 // Initialize cart with local storage on client side
 export function useCart() {
   const [cart, setCart] = useState<CartItem[]>([])
-  const [isSyncing, setIsSyncing] = useState(false)
-
-  useEffect(() => {
-    initializeCart()
-  }, [])
+  const [isSyncing, setIsSyncing] = useState(true)
+  const isLoaded = useRef(false)
 
   // Load cart from localStorage or Supabase
-  const initializeCart = async () => {
+  const initializeCart = useCallback(async () => {
     try {
-      const savedCart = localStorage.getItem('dashop-cart')
-      
-      if (savedCart) {
-        setCart(JSON.parse(savedCart))
-        return
+      if (typeof window !== 'undefined') {
+        const savedCart = localStorage.getItem('dashop-cart')
+        if (savedCart) {
+          setCart(JSON.parse(savedCart))
+          setIsSyncing(false)
+          isLoaded.current = true
+          return
+        }
       }
 
       // Check if user is logged in
@@ -44,16 +45,41 @@ export function useCart() {
           .eq('user_id', session.user.id)
           .single()
 
-        if (cartData) {
-          setCart(JSON.parse(cartData.items || '[]'))
+        if (cartData && cartData.items) {
+          setCart(typeof cartData.items === 'string' ? JSON.parse(cartData.items) : cartData.items)
         }
       }
     } catch (error) {
       console.error('Error initializing cart:', error)
     } finally {
       setIsSyncing(false)
+      isLoaded.current = true
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    initializeCart()
+
+    // Sync cart when user logs in/out
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async () => {
+      await initializeCart()
+    })
+
+    return () => {
+      subscription.unsubscribe()
+    }
+  }, [initializeCart])
+
+  // Sync to localStorage whenever cart changes after initial load
+  useEffect(() => {
+    if (isLoaded.current && typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('dashop-cart', JSON.stringify(cart))
+      } catch (error) {
+        console.error('Error saving cart to localStorage:', error)
+      }
+    }
+  }, [cart])
 
   // Add item to cart
   const addToCart = useCallback((product: any, quantity = 1) => {
@@ -64,7 +90,6 @@ export function useCart() {
       )
 
       if (existingItem) {
-        // Update quantity if exists
         return prev.map(item =>
           item.id === existingItem.id
             ? { ...item, quantity: Math.min(item.quantity + quantity, 99) }
@@ -72,7 +97,6 @@ export function useCart() {
         )
       }
 
-      // Add new item
       return [...prev, {
         id: `cart-${product.id}-${Date.now()}`,
         product_id: product.id,
@@ -81,17 +105,14 @@ export function useCart() {
         quantity: quantity,
         variant: product.variants?.[0]?.name || '',
         main_image_url: product.main_image_url,
+        description: product.description,
       }]
     })
-
-    // Save to localStorage
-    saveCartToLocalStorage()
   }, [])
 
   // Remove item from cart
   const removeFromCart = useCallback((id: string) => {
     setCart(prev => prev.filter(item => item.id !== id))
-    saveCartToLocalStorage()
   }, [])
 
   // Update item quantity
@@ -103,22 +124,14 @@ export function useCart() {
       }
       return item
     }))
-    saveCartToLocalStorage()
   }, [])
-
-  // Save cart to localStorage for persistence
-  const saveCartToLocalStorage = () => {
-    try {
-      localStorage.setItem('dashop-cart', JSON.stringify(cart))
-    } catch (error) {
-      console.error('Error saving cart to localStorage:', error)
-    }
-  }
 
   // Clear cart
   const clearCart = useCallback(() => {
     setCart([])
-    localStorage.removeItem('dashop-cart')
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('dashop-cart')
+    }
   }, [])
 
   // Get cart total
@@ -130,11 +143,6 @@ export function useCart() {
   const getItemCount = useCallback(() => {
     return cart.reduce((count, item) => count + item.quantity, 0)
   }, [cart])
-
-  // Sync cart when user logs in/out
-  supabase.auth.onAuthStateChange(async () => {
-    await initializeCart()
-  })
 
   return {
     cart,

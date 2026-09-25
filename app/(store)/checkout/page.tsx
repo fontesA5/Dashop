@@ -70,7 +70,7 @@ export default function CheckoutPage() {
           <div className="rounded-lg border bg-card p-6">
             <h2 className="text-lg font-semibold mb-4">Your Order</h2>
             <p className="text-sm text-muted-foreground">
-              Review your order before placing it. We'll send a confirmation email shortly.
+              Review your order before placing it. We&apos;ll send a confirmation email shortly.
             </p>
 
             <div className="mt-4 space-y-3">
@@ -277,7 +277,7 @@ export default function CheckoutPage() {
                 </div>
 
                 <p className="text-xs text-muted-foreground">
-                  Your payment information is encrypted and secure. We don't store your card details.
+                  Your payment information is encrypted and secure. We don&apos;t store your card details.
                 </p>
               </div>
             </section>
@@ -294,7 +294,7 @@ export default function CheckoutPage() {
               />
 
               <p className="text-xs text-muted-foreground">
-                We'll include this information with your order.
+                We&apos;ll include this information with your order.
               </p>
             </section>
 

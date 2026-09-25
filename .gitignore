@@ -39,3 +39,6 @@ temp/
 .wrangler/
 .config/
 .open-next/
+
+# Lock files (always resolve fresh)
+package-lock.json
